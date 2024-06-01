@@ -84,8 +84,6 @@ module.exports.register = async (req, res) => {
       was_online: !!client?.brondate,
       brondate: client.brondate || null,
     });
-    console.log("newclient----------");
-    console.log(newclient);
     await newclient.save();
 
     //=========================================================
@@ -1277,7 +1275,6 @@ module.exports.registerOnline = async (req, res) => {
     // CheckData
     // const checkClient = validateOfflineClient(client).error
     // if (checkClient) {
-    //     console.log(client);
     //     return res.status(400).json({
     //         error: checkClient.message,
     //     })
@@ -1347,7 +1344,7 @@ module.exports.registerOnline = async (req, res) => {
       // const { error } = validateOfflineService(service)
 
       // if (error) {
-      //     console.log(service);
+      //     (service);
       //     return res.status(400).json({
       //         error: error.message,
       //     })

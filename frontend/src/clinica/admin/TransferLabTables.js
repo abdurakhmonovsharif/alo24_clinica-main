@@ -167,7 +167,6 @@ const TransferLabTables = () => {
                                                     <Select
                                                         value={selectedFilial}
                                                         onChange={(e) => {
-                                                            console.log(e);
                                                             setSelectedFilial(e)
                                                             setFilialClinica(e.value)
                                                         }}

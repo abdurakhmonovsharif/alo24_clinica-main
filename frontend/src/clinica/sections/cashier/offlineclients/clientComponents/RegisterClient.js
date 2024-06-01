@@ -414,12 +414,6 @@ export const RegisterClient = ({
                   >
                     <button
                       onClick={() => {
-                        console.log(
-                          totalpayment,
-                          payments,
-                          discount.discount,
-                          payment.debt
-                        );
                         setPayment({
                           ...payment,
                           type: "cash",

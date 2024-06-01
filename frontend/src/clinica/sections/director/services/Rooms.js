@@ -202,7 +202,6 @@ export const Rooms = () => {
     }
   }
 
-  console.log(room);
 
   const uploadAllRooms = useCallback(async () => {
     try {

@@ -63,7 +63,6 @@ module.exports.register = async (req, res) => {
         delete connector._id
 
         // const doct = await User.findById(connector.doctor)
-        // console.log(doct);
         // return 
         //=========================================================
         // CheckData
@@ -321,7 +320,6 @@ module.exports.register = async (req, res) => {
                 if (payment.discount) {
                     let offlinediscount = await OfflineDiscount.findById(payment.discount)
                     delete offlinediscount._id
-                    console.log(offlinediscount);
                     const statsionardiscount = new StatsionarDiscount({
                         comment: offlinediscount.comment,
                         clinica: offlinediscount.clinica,

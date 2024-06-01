@@ -77,7 +77,7 @@ module.exports.getDirectService = async (req, res) => {
             })
             .lean()
 
-            console.log(services);
+            (services);
 
         res.status(200).send(services);
 

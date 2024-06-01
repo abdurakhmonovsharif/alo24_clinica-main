@@ -102,7 +102,6 @@ module.exports.get = async (req, res) => {
         .populate("client", "firstname lastname")
         .lean()
         .then((services) => {
-          console.log(services);
           return services.filter((service) => !service.refuse);
         });
     }

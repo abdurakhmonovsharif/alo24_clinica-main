@@ -138,7 +138,6 @@ export const ClinicaRegister = ({ onFinishCreate, onFinishUpdate, clinicaData })
   const changeHandler = (e) => {
     setClinica({ ...clinica, [e.target.name]: e.target.value });
   };
-  console.log(clinica);
   const onHandler = () => {
     if (clinica._id) {
       updatedHandler()

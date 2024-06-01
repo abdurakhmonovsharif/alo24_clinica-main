@@ -136,7 +136,6 @@ export const RegistorUser = ({
                       onChange={(e) => {
                         getDepartments(e.target.value)
                         setUser({ ...user, clinica: e.target.value });
-                        console.log(e.target.value);
                       }}
                       className="form-control form-control-sm selectpicker"
                       id="select"

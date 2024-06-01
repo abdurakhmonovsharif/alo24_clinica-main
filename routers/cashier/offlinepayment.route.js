@@ -163,8 +163,6 @@ module.exports.payment = async (req, res) => {
             .sort({ _id: -1 })
             .lean()
             .then(connector => {
-                console.log(unpaymentServices);
-                console.log(connector.services);
 
                 let newconnector = {
                     ...connector,

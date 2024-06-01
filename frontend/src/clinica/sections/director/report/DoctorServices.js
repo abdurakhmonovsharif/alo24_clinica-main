@@ -24,7 +24,6 @@ const DoctorServices = () => {
     const [beginDay, setBeginDay] = useState(state?.startDate);
     const [endDay, setEndDay] = useState(state?.endDate);
 
-    console.log(state);
     //======================================================
     //======================================================
     // Pagination

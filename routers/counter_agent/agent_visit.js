@@ -4,7 +4,6 @@ require("../../models/CounterDoctor/CounterDoctor")
 module.exports.create = async (req, res) => {
     try {
         const { clinica, counter_agent, counter_doctor, comment } = req.body;
-        console.log('ok');
         const visit = new Visit({
             clinica,
             counter_agent,

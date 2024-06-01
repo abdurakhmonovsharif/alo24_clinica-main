@@ -369,7 +369,6 @@ const Tables = () => {
     const serviceVisible = (e, index) => {
         // let servicess = [...currentServices]
         // servicess[index].visible = e.target.checked
-        // console.log(servicess);
         setCurrentServices([...currentServices].map((service, ind) => {
             if (ind === index) {
                 service.visible = e.target.checked
@@ -377,7 +376,6 @@ const Tables = () => {
             return service
         }))
     }
-    console.log(currentServices);
     const updateService = async (index) => {
         try {
             const data = await request(

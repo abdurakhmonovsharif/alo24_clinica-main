@@ -337,7 +337,6 @@ export const OnlineClients = () => {
     // ChangeDate
 
     const changeStart = (e) => {
-        console.log(e);
         setBeginDay(new Date(e));
         const search = [...searchStorage].filter(el => new Date(el.brondate).getTime() > new Date(new Date(e).setHours(0, 0, 0, 0)).getTime() && new Date(el.brondate).getTime() < new Date(new Date(e).setHours(23, 59, 59, 0)).getTime())
         setConnectors(search)

@@ -378,7 +378,6 @@ export const OnlineClientsDoctor = () => {
   // ChangeDate
 
   const changeStart = (e) => {
-    console.log(e);
     setBeginDay(new Date(e));
 
     const search = [...searchStorage].filter(

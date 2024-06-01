@@ -382,7 +382,6 @@ const Print = ({ client, connector, sections, baseUrl, clinica }) => {
 const ClientHistoryLab = () => {
 
     const { id } = useParams();
-    console.log(id);
 
     const componentRef = useRef()
     const handlePrint = useReactToPrint({
@@ -436,7 +435,6 @@ const ClientHistoryLab = () => {
         [request, notify]
     );
 
-    console.log(auth);
 
     const [baseUrl, setBaseUrl] = useState()
 

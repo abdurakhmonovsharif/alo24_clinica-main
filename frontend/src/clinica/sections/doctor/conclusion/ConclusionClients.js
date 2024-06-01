@@ -130,7 +130,6 @@ export const ConclusionClients = () => {
 
     const searchBorn = () => {
       setCurrentDoctorClients([...searchStorage].filter(doctor => {
-        console.log(new Date(new Date(doctor.client.born).setHours(0, 0, 0, 0)).toISOString() === new Date(new Date(clientBorn).setHours(0, 0, 0, 0)).toISOString());
         return new Date(new Date(doctor.client.born).setHours(0, 0, 0, 0)).toISOString() === new Date(new Date(clientBorn).setHours(0, 0, 0, 0)).toISOString()
       }))
     }
@@ -230,7 +229,6 @@ export const ConclusionClients = () => {
     }
   }, [auth, beginDay, s, endDay, getDoctorClients, getBaseUrl]);
 
-  console.log(currentDoctorClients);
   const componentRef = useRef()
   const print = useReactToPrint({
     content: () => componentRef.current,

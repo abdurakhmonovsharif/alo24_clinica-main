@@ -693,7 +693,6 @@ const LabTemplate = ({ client, connector, services, baseUrl }) => {
     setSections(filtered);
   }
   const handleCheckAccept = (ind, serviceid, tableind) => {
-    console.log('ok');
     const filtered = sections.map((section, index) => {
       if (index === ind) {
         let newServices = section.services.map((service) => {
@@ -791,7 +790,6 @@ const LabTemplate = ({ client, connector, services, baseUrl }) => {
 
   }, [services]);
 
-  console.log(sections);
 
   useEffect(() => {
     if (connector && baseUrl) {

@@ -28,7 +28,6 @@ const StationarDoctorReport = () => {
 
     const { state } = useLocation()
 
-    console.log(state);
     //======================================================
     //======================================================
     // Pagination

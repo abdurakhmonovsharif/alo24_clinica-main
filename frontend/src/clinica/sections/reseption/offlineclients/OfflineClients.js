@@ -793,47 +793,46 @@ export const OfflineClients = () => {
 
   const addHandler = useCallback(async () => {
     setIsActive(false);
-    console.log("addhandler");
-    // try {
-    //   const data = await request(
-    //     `/api/offlineclient/client/add`,
-    //     "POST",
-    //     {
-    //       client: { ...client, clinica: auth.clinica._id },
-    //       connector: { ...connector, clinica: auth.clinica._id },
-    //       services: [...services],
-    //       products: [...newproducts],
-    //       counterdoctor: counterdoctor,
-    //       adver: { ...adver, clinica: auth.clinica._id },
-    //     },
-    //     {
-    //       Authorization: `Bearer ${auth.token}`,
-    //     }
-    //   );
-    //   localStorage.setItem("data", data);
-    //   navigateToPay(data);
-    //   getConnectors(beginDay, endDay);
-    //   notify({
-    //     title: `${client.lastname + " " + client.firstname}  ${t(
-    //       "ismli mijozga xizmatlar muvaffaqqiyatli qo'shildi."
-    //     )}`,
-    //     description: "",
-    //     status: "success",
-    //   });
-    //   clearDatas();
-    //   setModal(false);
-    //   setVisible(false);
-    //   setTimeout(() => {
-    //     setIsActive(true);
-    //   }, 5000);
-    //   setIsAddService(false);
-    // } catch (error) {
-    //   notify({
-    //     title: t(`${error}`),
-    //     description: "",
-    //     status: "error",
-    //   });
-    // }
+    try {
+      const data = await request(
+        `/api/offlineclient/client/add`,
+        "POST",
+        {
+          client: { ...client, clinica: auth.clinica._id },
+          connector: { ...connector, clinica: auth.clinica._id },
+          services: [...services],
+          products: [...newproducts],
+          counterdoctor: counterdoctor,
+          adver: { ...adver, clinica: auth.clinica._id },
+        },
+        {
+          Authorization: `Bearer ${auth.token}`,
+        }
+      );
+      localStorage.setItem("data", data);
+      navigateToPay(data);
+      getConnectors(beginDay, endDay);
+      notify({
+        title: `${client.lastname + " " + client.firstname}  ${t(
+          "ismli mijozga xizmatlar muvaffaqqiyatli qo'shildi."
+        )}`,
+        description: "",
+        status: "success",
+      });
+      clearDatas();
+      setModal(false);
+      setVisible(false);
+      setTimeout(() => {
+        setIsActive(true);
+      }, 5000);
+      setIsAddService(false);
+    } catch (error) {
+      notify({
+        title: t(`${error}`),
+        description: "",
+        status: "error",
+      });
+    }
   }, [
     auth,
     client,

@@ -22,7 +22,6 @@ const AllModal = ({ services, client, connector, clinica, baseUrl, modal, doctor
             }
             return prev;
         }, [])
-        console.log(departments);
         const accepts = [...departments].reduce((prev, department) => {
             const s = [...services].filter(serv => !serv.refuse && serv.accept && String(serv.department._id) === department)
             prev.push({
@@ -31,7 +30,6 @@ const AllModal = ({ services, client, connector, clinica, baseUrl, modal, doctor
             })
             return prev
         }, [])
-        console.log(accepts);
         setAcceptServices(accepts)
         setNotAcceptServices([...services].filter(service => !service.refuse && !service.accept))
     }, [services])

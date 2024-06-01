@@ -39,8 +39,6 @@ router.post('/statsionar/payment', auth, (req, res) => {
 })
 
 router.post('/statsionar/prepayment', auth, (req, res) => {
-    console.log("Salom")
-
     require('./statsionarpayment.route').prepayment(req, res)
 })
 

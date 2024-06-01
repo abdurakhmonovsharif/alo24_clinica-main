@@ -311,7 +311,6 @@ export const DoctorClients = () => {
   //   }
   //   if (e.target.value === 'not') {
   //     searching = [...searchStorage].filter(connector => {
-  //       console.log([...connector.services].filter(service => !service.accept).length);
   //       return connector.services.filter(service => !service.accept).length === 0
   //     })
   //   }

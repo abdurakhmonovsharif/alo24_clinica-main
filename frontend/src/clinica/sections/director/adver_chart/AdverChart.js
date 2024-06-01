@@ -137,8 +137,6 @@ const AdverChart = () => {
         [request, auth, notify]
     );
 
-    console.log(adverLabels);
-    console.log(colors);
     //=====================================================
     //=====================================================
 

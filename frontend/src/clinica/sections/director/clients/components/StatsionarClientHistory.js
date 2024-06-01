@@ -59,7 +59,6 @@ const StatsionarClientHistory = () => {
           }, [])
           setLabServices([...servicetypes, ...servicesmore])
     }, [connector]);
-    console.log(labServices);
     const componentRef = useRef()
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,

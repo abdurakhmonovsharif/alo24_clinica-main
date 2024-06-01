@@ -437,7 +437,6 @@ module.exports.getStatsionarAll = async (req, res) => {
           connector.services.some(service => String(service.department._id) === String(department))
         ))
     }
-    console.log(connectors);
     if (connectors.length > 0) {
       for (const connector of connectors) {
         clients.push({

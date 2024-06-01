@@ -126,12 +126,9 @@ export const Conclusion = () => {
     if (currentData.length > 0) {
       for (const client of currentData) {
         let services = []
-        console.log(client);
         for (const column of columns) {
-          console.log(column);
             let currentService = [...client.services].filter(service => service.service._id === column._id)
             if (currentService.length > 0) {
-              console.log(currentService);
               services.push(...currentService)
             }
             else {
@@ -150,7 +147,6 @@ export const Conclusion = () => {
 
     setServiceClietns(data);
   }
-  console.log(serviceClients)
   //=========================================================
   //=========================================================
   const handleChangeServiceType = (e) => {

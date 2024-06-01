@@ -52,7 +52,7 @@ export const StatsionarReportTable = ({
                     (24 * 60 * 60 * 1000)
                 )
             )
-            console.log(day);
+            (day);
             roomprice = connector?.room?.room?.price * day
         } else {
             let begin = new Date(connector?.room?.beginday)

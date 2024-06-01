@@ -1,5 +1,4 @@
 export const checkClientData = (client, t) => {
-    console.log(client);
     if (!client.firstname) {
         return {
             title: t("Diqqat! Mijoz ismi kiritilmagan."),

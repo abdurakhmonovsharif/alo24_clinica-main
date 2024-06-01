@@ -48,7 +48,6 @@ module.exports.getClientInfo = async (req, res) => {
             .populate('room')
             .populate('clinica')
             .lean()
-        console.log(clientconnector);
         res.status(200).json(clientconnector)
 
     } catch (error) {

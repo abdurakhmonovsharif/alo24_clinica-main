@@ -31,7 +31,6 @@ module.exports.payment = async (req, res) => {
         // CheckDiscount
         const checkDiscount = validateDiscount(discount).error
         if (checkDiscount) {
-            console.log(checkDiscount);
             return res.status(400).json({
                 error: error.message,
             })

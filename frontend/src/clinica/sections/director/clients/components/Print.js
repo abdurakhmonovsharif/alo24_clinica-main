@@ -69,7 +69,6 @@ const Print = ({ connector, baseUrl, clinica }) => {
       }
     }, [connector, baseUrl])
 
-    console.log(labServices);
 
     return (
         <>

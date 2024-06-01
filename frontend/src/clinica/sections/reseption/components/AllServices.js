@@ -4,7 +4,6 @@ import ReactHtmlParser from 'react-html-parser'
 const AllServices = ({ connector, clinica, baseUrl }) => {
     const [doctorServices, setDoctorServices] = useState([])
     const [labServices, setLabServices] = useState([])
-    console.log(doctorServices);
     useEffect(() => {
         setDoctorServices([...connector.services].filter(service => service.department.probirka == false));
         const serviceTypes = []

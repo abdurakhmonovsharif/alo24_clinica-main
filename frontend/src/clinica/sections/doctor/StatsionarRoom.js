@@ -10,7 +10,6 @@ import { DatePickers } from "./doctorclients/clientComponents/DatePickers";
 const StatsionarRoom = () => {
 
     // const { doctor, startDate, endDate } = useLocation().state
-    // console.log(doctor);
     //======================================================
     //======================================================
 

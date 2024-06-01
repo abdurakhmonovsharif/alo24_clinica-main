@@ -307,7 +307,6 @@ export const StatsionarClients = () => {
                     Authorization: `Bearer ${auth.token}`,
                 }
             );
-            console.log(counterdoctors);
             setCounterDoctors([...data].map(doctor => ({
                 ...doctor,
                 value: doctor._id,

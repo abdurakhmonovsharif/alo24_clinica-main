@@ -17,7 +17,6 @@ import { useTranslation } from "react-i18next";
 const StatsionarRoomDoctor = () => {
 
     const { doctor, startDate, endDate } = useLocation().state
-    // console.log(doctor);
     //======================================================
     //======================================================
 

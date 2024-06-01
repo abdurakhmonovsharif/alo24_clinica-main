@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next"
 const AllServices = ({ services, modal, setModal, modalBody, user }) => {
     const { t } = useTranslation()
 
-    console.log(user);
     return (
         <div
             className={`modal fade show ${modal ? "" : "d-none"}`}
