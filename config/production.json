@@ -2,7 +2,7 @@
   "PORT": 8080,
   "mongoUri": "mongodb://localhost/alo24",
   "jwtSecret": "aloMed",
-  "baseUrl": "http://alo-med.uz",
+  "baseUrl": "http://212.86.115.46:8080",
   "botToken": "6448433447:AAFR-suFV-wVfISyDtvb8LCIKX64SDAbfCg",
   "smsKey": "350fa2c20704462791918c0d3868068874700d02"
 }
