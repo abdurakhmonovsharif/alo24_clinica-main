@@ -32,7 +32,7 @@ const clinica = new Schema(
     isCreateUser: { type: Boolean, default: false },
     isArchive: { type: Boolean, default: false },
     reseption_and_pay: { type: Boolean, default: false },
-    connectorDoctor_client: { type: Boolean, default: true },
+    connectorDoctor_client: { type: Boolean, default: false },
     requiredFields: {
       type: Map,
       of: Boolean,
