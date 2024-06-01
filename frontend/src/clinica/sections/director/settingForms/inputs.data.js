@@ -12,7 +12,7 @@ export const receptionSettingForm = [
     name: "Telefon raqami",
     active: false,
   },
-  { key: 4, input_name: "gander", name: "Jinsi", active: false },
+  { key: 4, input_name: "gender", name: "Jinsi", active: false },
   { key: 5, input_name: "nation", name: "Millati", active: false },
   { key: 6, input_name: "address", name: "Manzili", active: false },
 ];
