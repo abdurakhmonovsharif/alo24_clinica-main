@@ -1,5 +1,5 @@
 {
-  "PORT": 8080,
+  "PORT": 80,
   "mongoUri": "mongodb://localhost/alo24",
   "jwtSecret": "aloMed",
   "baseUrl": "http://212.86.115.46:8080",
