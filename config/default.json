@@ -1,5 +1,5 @@
 {
-  "PORT": 9900,
+  "PORT": 80,
   "mongoUri": "mongodb://localhost:27017/clinika",
   "jwtSecret": "alo24",
   "baseUrl": "http://localhost:9900",
