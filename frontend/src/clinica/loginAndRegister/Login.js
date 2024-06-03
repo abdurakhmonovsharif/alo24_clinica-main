@@ -13,7 +13,7 @@ export const Login = () => {
   //====================================================================
   //====================================================================
 
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   //====================================================================
   //====================================================================
@@ -107,8 +107,9 @@ export const Login = () => {
         const data = await request(`/api/director/login`, "POST", { ...user });
         auth.login(data.token, data.userId, data.user, data.clinica);
         notify({
-          title: `${t("Xush kelibsiz")} ${data.user.firstname + " " + data.user.lastname
-            }!`,
+          title: `${t("Xush kelibsiz")} ${
+            data.user.firstname + " " + data.user.lastname
+          }!`,
           description: t("Kirish muvaffaqqiyatli amalga oshirildi"),
           status: "success",
         });
@@ -116,8 +117,9 @@ export const Login = () => {
         const data = await request(`/api/user/login`, "POST", { ...user });
         auth.login(data.token, data.userId, data.user, data.clinica);
         notify({
-          title: `${t("Xush kelibsiz")} ${data.user.firstname + " " + data.user.lastname
-            }!`,
+          title: `${t("Xush kelibsiz")} ${
+            data.user.firstname + " " + data.user.lastname
+          }!`,
           description: t("Kirish muvaffaqqiyatli amalga oshirildi"),
           status: "success",
         });
@@ -148,7 +150,7 @@ export const Login = () => {
   }, [getSections, auth]);
   //====================================================================
   //====================================================================
- 
+
   //====================================================================
   //====================================================================
 
@@ -156,5 +158,12 @@ export const Login = () => {
     return <h1>Loading...</h1>;
   }
 
-  return <LoginPage sections={sections} changeHandler={changeHandler} loginHandler={loginHandler} setSection={(e) => setUser({ ...user, type: e.target.value })} />
+  return (
+    <LoginPage
+      sections={sections}
+      changeHandler={changeHandler}
+      loginHandler={loginHandler}
+      setSection={(e) => setUser({ ...user, type: e.target.value })}
+    />
+  );
 };

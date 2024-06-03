@@ -39,19 +39,19 @@ export const CheckModal = ({
     }
   }, [connector, baseUrl]);
   useEffect(() => {
-    if (openSmallCheck) {
+    if (openSmallCheck && !modal) {
       handlePrint2();
     }
-  }, [openSmallCheck]);
+  }, [openSmallCheck, modal]);
+  console.log(modal);
   return (
     <div
-      // className={`modal ${modal ? "" : "d-none"}`}
-      className={"modal d-none"}
+      className={`modal ${modal ? "" : "d-none"}`}
       id="customModal"
       tabIndex={-1}
       role="dialog"
       aria-labelledby="customModalLabel"
-      style={{ display: "block" }}
+      style={{ display: modal ? "block" : "none" }}
       aria-modal="true"
     >
       <div className="min-h-screen" role="document">

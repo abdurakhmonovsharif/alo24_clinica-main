@@ -491,8 +491,11 @@ module.exports.add = async (req, res) => {
     updateOfflineConnector.totalprice =
       updateOfflineConnector.totalprice + totalprice;
     await updateOfflineConnector.save();
-
-    res.status(201).send({ message: "Xizmatlar ro'yxatga olindi" });
+    const response = await OfflineConnector.findById(updateOfflineConnector._id)
+      .populate("client")
+      .populate("services")
+      .populate("products");
+    res.status(201).send(response);
   } catch (error) {
     console.log(error);
     res.status(501).json({ error: "Serverda xatolik yuz berdi..." });

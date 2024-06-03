@@ -303,7 +303,7 @@ export const TableClients = ({
                                 });
                               }
                             }
-                            setClientDate(connector.client.born.slice(0, 10));
+                            setClientDate(connector.client?.born?.slice(0, 10));
                             setIsAddConnector(true);
                             setVisible(true);
                           }}
@@ -323,7 +323,9 @@ export const TableClients = ({
                           className={`bg-green-500 border-green-500 hover:bg-green-400 btn btn-success py-0`}
                           onClick={() => {
                             setClient({ ...connector.client });
-                            setClientDate(connector.client.born.slice(0, 10));
+                            setClientDate(
+                              connector?.client?.born?.slice(0, 10)
+                            );
                             setConnector({
                               ...connector,
                               _id: connector._id,

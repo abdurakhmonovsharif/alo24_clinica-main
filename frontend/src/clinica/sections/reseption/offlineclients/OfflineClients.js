@@ -672,14 +672,16 @@ export const OfflineClients = () => {
   //====================================================================
   //====================================================================
   // CreateHandler
-  const navigateToPay = (data) => {
+  const navigateToPay = (client_id) => {
     if (auth.clinica.reseption_and_pay) {
       history.push({
         pathname: "/alo24/cashier",
+        search: "?payFromReseption=true",
         state: {
-          data,
+          client_id,
         },
       });
+      sessionStorage.setItem("payFromReseption", "payFromReseption");
     }
   };
   const createHandler = useCallback(async () => {
@@ -706,7 +708,7 @@ export const OfflineClients = () => {
         status: "success",
       });
       const s = [data, ...connectors];
-      navigateToPay(data);
+      navigateToPay(data?.client?._id);
       setConnectors(s);
       setSearchStrorage(s);
       setCurrentConnectors(s.slice(indexFirstConnector, indexLastConnector));
@@ -810,7 +812,7 @@ export const OfflineClients = () => {
         }
       );
       localStorage.setItem("data", data);
-      navigateToPay(data);
+      navigateToPay(data?.client?._id);
       getConnectors(beginDay, endDay);
       notify({
         title: `${client.lastname + " " + client.firstname}  ${t(
@@ -866,7 +868,7 @@ export const OfflineClients = () => {
           Authorization: `Bearer ${auth.token}`,
         }
       );
-      navigateToPay(data);
+      navigateToPay(data?.client?._id);
       getConnectors(beginDay, endDay);
       clearDatas();
       setModal(false);
@@ -940,7 +942,7 @@ export const OfflineClients = () => {
         firstname: onlineclient.firstname,
         lastname: onlineclient.lastname,
         phone: onlineclient.phone,
-        brondate:onlineclient.brondate
+        brondate: onlineclient.brondate,
       });
       setVisible(true);
     }

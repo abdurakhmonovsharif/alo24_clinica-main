@@ -279,18 +279,29 @@ export const OfflineClients = () => {
   });
   const location = useLocation();
   const history = useHistory();
+  const IsPayFromReseption =
+    location.search.substring("1", location.search?.length - 5) ===
+    sessionStorage.getItem("payFromReseption");
   useEffect(() => {
-    if (location?.state && location?.state?.data) {
-      changeVisible();
-      changeClient(location.state.data);
+    if (location.state && "client_id" in location.state) {
+      if (loading === false) {
+        const connector = connectors.find(
+          (c) => c.client._id === location.state.client_id
+        );
+        if (connector) {
+          const index = connectors.indexOf(connector);
+          changeClient(connector, index);
+          changeVisible();
+        }
+      }
     }
-  }, [location.state]);
+  }, [location.state, connectors]);
   const changeClient = useCallback((connector, index) => {
     setIndex(index);
     let total = 0;
     let services = [];
     let products = [];
-    let servs = JSON.parse(JSON.stringify(connector.services));
+    let servs = JSON.parse(JSON.stringify(connector?.services || ""));
     for (const serv of servs) {
       serv.isPayment = serv.payment;
       if (!serv.payment && !serv.refuse) {
@@ -301,7 +312,7 @@ export const OfflineClients = () => {
         total += serv.service.price * serv.pieces;
       }
     }
-    let prods = JSON.parse(JSON.stringify(connector.products));
+    let prods = JSON.parse(JSON.stringify(connector?.products || ""));
     for (const prod of prods) {
       if (!prod.payment && !prod.refuse) {
         products.push(prod._id);
@@ -746,11 +757,17 @@ export const OfflineClients = () => {
         description: "",
         status: "success",
       });
+
       setAll();
       setCheck(data);
-      setOpenSmallCheck(true);
-      setSmallCheckType("done");
-      history.push("/alo24");
+      if (auth.clinica?.reseption_and_pay) {
+        setOpenSmallCheck(IsPayFromReseption);
+        sessionStorage.clear();
+        setSmallCheckType("done");
+        if (IsPayFromReseption) {
+          history.push("/alo24");
+        }
+      }
       getConnectors(beginDay, endDay);
       setTimeout(() => {
         setIsActive(true);
