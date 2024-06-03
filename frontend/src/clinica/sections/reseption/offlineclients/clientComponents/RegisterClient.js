@@ -205,7 +205,7 @@ export const RegisterClient = ({
                         </div>
                       </div>
                     )}
-                    { (
+                    {requiredFields.gender && (
                       <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div className="form-group">
                           <label htmlFor="biO">{t("Jinsi")}</label>
