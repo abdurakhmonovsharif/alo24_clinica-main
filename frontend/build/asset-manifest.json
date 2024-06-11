@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.473b5e1d.css",
+    "main.js": "/static/js/main.6be0f5d8.js",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.6878d55e3615ccf40c38.svg",
+    "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/iconeyeon.png": "/static/media/iconeyeon.138663e759b58c48717e.png",
+    "static/media/qrcode.png": "/static/media/qrcode.01bc3c1f59b2cd9fb111.png",
+    "static/media/img-01.png": "/static/media/img-01.b76d8fd38a159a019864.png",
+    "static/media/clinica_logo.jpg": "/static/media/clinica_logo.561ead35d9803a6adaa4.jpg",
+    "static/media/iconeyeoff.png": "/static/media/iconeyeoff.c810f29384a6b5a14a8d.png",
+    "static/media/cloudUpLoad.png": "/static/media/cloudUpLoad.6d085e702a82339af3be.png",
+    "index.html": "/index.html",
+    "static/media/getFetch.cjs": "/static/media/getFetch.c780682470504fffbd04.cjs",
+    "main.473b5e1d.css.map": "/static/css/main.473b5e1d.css.map",
+    "main.6be0f5d8.js.map": "/static/js/main.6be0f5d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.473b5e1d.css",
+    "static/js/main.6be0f5d8.js"
+  ]
+}

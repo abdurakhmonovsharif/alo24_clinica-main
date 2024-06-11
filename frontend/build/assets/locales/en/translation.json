@@ -3,7 +3,6 @@
   "select_n2": "Ism sharifingizni tanlang",
   "inp_placeholder": "Kodni kiriting",
   "login_button": "Kirish",
-
   "Dushanba": "Dushanba",
   "Seshanba": "Seshanba",
   "Chorshanba": "Chorshanba",
@@ -11,7 +10,7 @@
   "Juma": "Juma",
   "Shanba": "Shanba",
   "Yakshanba": "Yakshanba",
-
+  "Ambulator karta raqami:":"Ambulator karta raqami", 
   "Yanvar": "Yanvar",
   "Fevral": "Fevral",
   "Mart": "Mart",
@@ -24,14 +23,12 @@
   "Oktabr": "Oktabr",
   "Noyabr": "Noyabr",
   "Dekabr": "Dekabr",
-
   "yil": "yil",
-
-  "menu1":"Bosh sahifa",
-  "menu2":"Xizmatlar",
-  "menu3":"Shifokorlar",
-  "menu4":"Foydalanuchilar",
-  "menu5":"Qabul",
-  "menu6":"Kassa",
-  "menu7":"Marketing"
+  "menu1": "Bosh sahifa",
+  "menu2": "Xizmatlar",
+  "menu3": "Shifokorlar",
+  "menu4": "Foydalanuchilar",
+  "menu5": "Qabul",
+  "menu6": "Kassa",
+  "menu7": "Marketing"
 }
