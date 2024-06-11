@@ -3,8 +3,6 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from "rea
 import { receptionSettingForm } from "./inputs.data";
 import { AuthContext } from "../../../context/AuthContext";
 import { useHttp } from "../../../hooks/http.hook";
-import { t } from "i18next";
-import { useDebounce } from 'use-debounce'
 const SettingForms = () => {
   const auth = useContext(AuthContext);
   const [requiredFields, setRequiredFieds] = useState(null);
