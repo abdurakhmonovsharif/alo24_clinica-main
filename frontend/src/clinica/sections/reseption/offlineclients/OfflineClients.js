@@ -124,7 +124,7 @@ export const OfflineClients = () => {
   // getConnectors
   const [connectors, setConnectors] = useState([]);
   const [searchStorage, setSearchStrorage] = useState([]);
-
+const [lastCardNumber,setLastCardNumber]=useState(0)
   const getConnectors = useCallback(
     async (beginDay, endDay) => {
       try {
@@ -151,6 +151,25 @@ export const OfflineClients = () => {
     },
     [request, auth, notify, indexFirstConnector, indexLastConnector]
   );
+  const getLastCardNumber=async()=>{
+    try {
+      const {card_number} = await request(
+        `/api/offlineclient/client/lastCardNumber/${auth&&auth.clinica._id}`,
+        "GET",
+        null,
+        {
+          Authorization: `Bearer ${auth.token}`,
+        }
+      );
+      setLastCardNumber(card_number)
+    } catch (error) {
+      notify({
+        title: t(`${error}`),
+        description: "",
+        status: "error",
+      });
+    }
+  }
   //====================================================================
   //====================================================================
 
@@ -715,6 +734,8 @@ export const OfflineClients = () => {
       setModal(false);
       clearDatas();
       setVisible(false);
+      getLastCardNumber();
+      localStorage.removeItem("newClient")
       setTimeout(() => {
         setIsActive(true);
       }, 5000);
@@ -914,6 +935,7 @@ export const OfflineClients = () => {
       setS(1);
       getConnectors(beginDay, endDay);
       getDepartments();
+      getLastCardNumber()
       getCounterDoctors();
       getAdvers();
       getProducts();
@@ -957,25 +979,24 @@ export const OfflineClients = () => {
             <div className="row">
               <div className="col-12 text-end">
                 <button
-                  className={`btn bg-alotrade text-white mb-2 w-100 ${
-                    visible ? "d-none" : ""
-                  }`}
-                  onClick={changeVisible}
+                  className={`btn bg-alotrade text-white mb-2 w-100 `}
+                  onClick={()=>{
+                    changeVisible()
+                    if(visible===false){
+                    localStorage.setItem("newClient","true")
+                    }else{
+                      localStorage.removeItem("newClient")
+                    }
+                  }}
                 >
                   {t("Registratsiya")}
                 </button>
-                <button
-                  className={`btn bg-alotrade text-white mb-2 w-100 ${
-                    visible ? "" : "d-none"
-                  }`}
-                  onClick={changeVisible}
-                >
-                  {t("Registratsiya")}
-                </button>
+              
               </div>
             </div>
             <div className={` ${visible ? "" : "d-none"}`}>
               <RegisterClient
+              lastCardNumber={lastCardNumber}
                 requiredFields={requiredFields}
                 isAddService={isAddService}
                 selectedServices={selectedServices}

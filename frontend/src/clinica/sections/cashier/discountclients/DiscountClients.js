@@ -114,9 +114,9 @@ export const DiscountClients = () => {
           ` /api/cashier/offline/discounts`,
           "POST",
           { clinica: auth && auth.clinica._id, beginDay, endDay },
-          {
-            Authorization: `Bearer ${auth.token}`,
-          }
+            {
+              Authorization: `Bearer ${auth.token}`,
+            }
         );
         setOfflineDiscounts(data);
       } catch (error) {

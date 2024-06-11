@@ -1,20 +1,22 @@
-import { FormControl, FormLabel, Switch } from "@chakra-ui/react";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import { FormControl, FormLabel, Input, Switch } from "@chakra-ui/react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { receptionSettingForm } from "./inputs.data";
 import { AuthContext } from "../../../context/AuthContext";
 import { useHttp } from "../../../hooks/http.hook";
 import { t } from "i18next";
-
+import { useDebounce } from 'use-debounce'
 const SettingForms = () => {
   const auth = useContext(AuthContext);
   const [requiredFields, setRequiredFieds] = useState(null);
   const [cashNavigate, setCashNavigate] = useState(false);
   const [connectorDoctor_client, setConnectorDoctor_client] = useState(false);
+  const [cardNumber, setCardNumber] = useState('');
   const { request, loading } = useHttp();
   useEffect(() => {
     getRequiredFields();
     getConnectorDoctor();
     getReseptionPayAccess();
+    getLastCardNumber()
   }, []);
   //====================================================================
   //====================================================================
@@ -68,7 +70,26 @@ const SettingForms = () => {
       // });
     }
   });
-
+  const getLastCardNumber = useCallback(async () => {
+    try {
+      const { card_number } = await request(
+        `/api/offlineclient/client/lastCardNumber/${auth.clinica._id}`,
+        "GET",
+        null,
+        {
+          Authorization: `Bearer ${auth.token}`,
+        }
+      );
+      setCardNumber(card_number);
+    } catch (error) {
+      console.log("error :",error);
+      // notify({
+      //   title: t(`${error}`),
+      //   description: "",
+      //   status: "error",
+      // });
+    }
+  });
   const handleChangeReceptionFormSwitch = async (name, value) => {
     try {
       await request(
@@ -120,6 +141,51 @@ const SettingForms = () => {
       // });
     }
   };
+  const cardNumberFunctionRef = useRef(null);
+  const handleChangeCardNumber = (e) => {
+    setCardNumber(e.target.value);
+    
+    // Clear the previous timeout
+    if (cardNumberFunctionRef.current) {
+      clearTimeout(cardNumberFunctionRef.current);
+    }
+    
+    // Set a new timeout
+    if (e.target.value !== "") {
+      cardNumberFunctionRef.current = setTimeout(async () => {
+        changeCardNumber(e.target.value);
+      }, 2000);
+    }
+  };
+
+  // Function to make API request to change card number
+  const changeCardNumber = async (newCardNumber) => {
+    try {
+      await request(
+        `/api/offlineclient/client/changeLastCardNumber/${auth.clinica._id}`,
+        'PATCH',
+        { card_number: newCardNumber },
+        {
+          Authorization: `Bearer ${auth.token}`,
+        }
+      );
+    getLastCardNumber() 
+      console.log('Card number updated');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Cleanup timeout on component unmount
+  useEffect(() => {
+    return () => {
+      if (cardNumberFunctionRef.current) {
+        clearTimeout(cardNumberFunctionRef.current);
+      }
+    };
+  }, []);
+
+
   return (
     <div className="container-fluid">
       <div className="pb-6 pt-4 col-xl-4 border-r borer-4">
@@ -180,7 +246,7 @@ const SettingForms = () => {
           </li>
         </ul>
         <span className="font-medium">Yo'nlanma shifokor</span>
-        <ul className="mt-2 ml-2">
+        <ul className="my-2 ml-2">
           <li className="border-b py-1">
             <FormControl
               display="flex"
@@ -197,6 +263,32 @@ const SettingForms = () => {
                 disabled={loading}
                 isChecked={connectorDoctor_client}
                 id={"connectorDoctor_client"}
+              />
+            </FormControl>
+          </li>
+        </ul>
+        <span className="font-medium"> Ohirgi karta raqam</span>
+        <ul className="mt-2 ml-2">
+          <li className="border-b py-1">
+            <FormControl
+              display="block"
+              onChange={handleChangeCardNumber}
+            >
+              <Input
+                id="card_number"
+                className="is-valid"
+                placeholder="Karta raqam"
+                size="sm"
+                value={cardNumber}
+                type="number"
+                style={
+                  {
+                    borderColor: "#eee",
+                    boxShadow: "none",
+                  }
+                }
+
+                name="card_number"
               />
             </FormControl>
           </li>

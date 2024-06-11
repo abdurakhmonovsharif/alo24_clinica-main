@@ -10,6 +10,7 @@ const client = new Schema(
     lastname: { type: String, required: true },
     fathername: { type: String },
     fullname: { type: String },
+    card_number:{type:Number,default:null,required:false},
     born: { type: Date },
     gender: { type: String },
     phone: { type: String },
@@ -35,6 +36,7 @@ async function validateClient(client) {
   const schema = Joi.object({
     clinica: Joi.string(),
     firstname: Joi.string().required(),
+    card_number: Joi.string(),
     lastname: Joi.string().required(),
     fathername: requiredFields.get("fathername")
       ? Joi.string().required()

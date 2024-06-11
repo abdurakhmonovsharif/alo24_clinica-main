@@ -1,6 +1,6 @@
 {
   "PORT": 80,
-  "mongoUri": "mongodb://localhost/clinika",
+  "mongoUri": "mongodb://127.0.0.1:27017/clinika",
   "jwtSecret": "aloMed",
   "baseUrl": "http://212.86.115.46",
   "botToken": "6448433447:AAFR-suFV-wVfISyDtvb8LCIKX64SDAbfCg",

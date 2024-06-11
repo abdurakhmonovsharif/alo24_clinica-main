@@ -43,7 +43,6 @@ export const CheckModal = ({
       handlePrint2();
     }
   }, [openSmallCheck, modal]);
-  console.log(modal);
   return (
     <div
       className={`modal ${modal ? "" : "d-none"}`}

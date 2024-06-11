@@ -306,6 +306,8 @@ export const TableClients = ({
                             setClientDate(connector.client?.born?.slice(0, 10));
                             setIsAddConnector(true);
                             setVisible(true);
+                            const localStorageValue=connector.client.card_number===null
+                            localStorage.setItem("newClient",localStorageValue)
                           }}
                         >
                           <FontAwesomeIcon icon={faRotate} />
@@ -322,6 +324,8 @@ export const TableClients = ({
                         <button
                           className={`bg-green-500 border-green-500 hover:bg-green-400 btn btn-success py-0`}
                           onClick={() => {
+                            const localStorageValue=connector.client.card_number===null
+                            localStorage.setItem("newClient",localStorageValue)
                             setClient({ ...connector.client });
                             setClientDate(
                               connector?.client?.born?.slice(0, 10)

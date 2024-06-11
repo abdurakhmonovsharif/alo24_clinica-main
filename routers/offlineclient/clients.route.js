@@ -542,8 +542,8 @@ module.exports.addConnector = async (req, res) => {
     await newconnector.save();
 
     const currentClient = await OfflineClient.findById(client._id);
-
     currentClient.connectors.push(newconnector._id);
+    currentClient.card_number=client.card_number
     await currentClient.save();
 
     //=========================================================
@@ -691,7 +691,70 @@ module.exports.addConnector = async (req, res) => {
     res.status(501).json({ error: "Serverda xatolik yuz berdi..." });
   }
 };
+module.exports.addCardNumberToLastClient = async (req, res) => {
+  try {
+    const {clinica}=req.params;
+    const {card_number}=req.body;
+    // Retrieve the clinica (assuming there's only one or we need the first one found)
+    const findedClinica = await Clinica.findById(clinica);
+    
+    if (!findedClinica) {
+      return res.status(404).json({ error: "Clinica topilmadi!" });
+    }
 
+    // Find the last offlineClient
+    const lastOfflineClient = await OfflineClient.findOne({clinica}).sort({ _id: -1 });
+    
+    if (!lastOfflineClient) {
+      return res.status(404).json({ error: "Last offline client not found" });
+    }
+
+    // Update the card_number of the last offlineClient
+    lastOfflineClient.card_number = Number(card_number);
+    
+    // Save the updated offlineClient
+    await lastOfflineClient.save();
+
+    // Send a success response
+    res.status(200).json({ message: "Karta raqam yangilandi" });
+  } catch (error) {
+    console.error(error);
+    res.status(501).json({ error: "Serverda xatolik yuz berdi..." });
+  }
+}
+module.exports.getLastCardNumber = async (req, res) => {
+  try {
+    const { clinica } = req.params;
+    const findedClinica = await Clinica.findById(clinica);
+
+    if (!findedClinica) {
+      return res.status(404).json({ error: "Clinica topilmadi!" });
+    }
+
+    let lastOfflineClient;
+    let lastCardNumber = null;
+    let offset = 0;
+
+    while (!lastCardNumber) {
+      lastOfflineClient = await OfflineClient.findOne({ clinica }).skip(offset).sort({ _id: -1 });
+
+      if (!lastOfflineClient) {
+        return res.status(404).json({ error: "Last offline client not found" });
+      }
+
+      if (lastOfflineClient.card_number !== null) {
+        lastCardNumber = lastOfflineClient.card_number;
+      } else {
+        offset++;
+      }
+    }
+
+    res.status(200).json({ card_number: lastCardNumber });
+  } catch (error) {
+    console.error(error);
+    res.status(501).json({ error: "Serverda xatolik yuz berdi..." });
+  }
+}
 //Clients getall
 module.exports.getAll = async (req, res) => {
   try {
@@ -787,7 +850,7 @@ module.exports.getAllReseption = async (req, res) => {
         .select("probirka client accept services products createdAt totalprice")
         .populate(
           "client",
-          "fullname firstname lastname fathername phone national id gender born address"
+          "fullname firstname lastname fathername phone national id gender born address card_number"
         )
         .populate({
           path: "services",
@@ -854,7 +917,7 @@ module.exports.getAllReseption = async (req, res) => {
         .select("probirka client accept services products createdAt totalprice")
         .populate(
           "client",
-          "fullname firstname lastname fathername phone national id gender born address"
+          "fullname firstname lastname fathername phone national id gender born address card_number"
         )
         .populate({
           path: "services",
@@ -913,7 +976,7 @@ module.exports.getAllReseption = async (req, res) => {
         .select("probirka client accept services products createdAt totalprice")
         .populate(
           "client",
-          "fullname firstname lastname fathername phone national id gender born address"
+          "fullname firstname lastname fathername phone national id gender born address card_number"
         )
         .populate({
           path: "services",
@@ -976,7 +1039,7 @@ module.exports.getAllReseption = async (req, res) => {
         .select("probirka client accept services products createdAt totalprice")
         .populate(
           "client",
-          "fullname firstname lastname fathername phone national id gender born address"
+          "fullname firstname lastname fathername phone national id gender born address card_number"
         )
         .populate({
           path: "services",
@@ -1041,7 +1104,7 @@ module.exports.getAllReseption = async (req, res) => {
         .select("probirka client accept services products createdAt totalprice")
         .populate(
           "client",
-          "fullname firstname lastname fathername national phone id gender born address"
+          "fullname firstname lastname fathername national phone id gender born address card_number"
         )
         .populate({
           path: "services",

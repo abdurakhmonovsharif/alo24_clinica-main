@@ -5,6 +5,9 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../../../context/AuthContext";
+import { Button, Checkbox, FormControl, FormLabel, Switch } from "@chakra-ui/react";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const animatedComponents = makeAnimated();
 
@@ -37,6 +40,7 @@ export const RegisterClient = ({
   clientDate,
   servicetypes,
   isAddService,
+  lastCardNumber
 }) => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
@@ -394,6 +398,33 @@ export const RegisterClient = ({
                       })}
                     </select>
                   </div>
+                </div>
+                <div>
+                  <FormControl
+                    display="flex"
+                    alignItems="center"
+                    justifyContent={"space-between"}
+                  >
+                    <FormLabel htmlFor="email-alerts" mb="0">
+                    {t("Ambulator karta raqami:")}
+                    </FormLabel>
+                    <Button
+                      disabled={localStorage.getItem("newClient") !== "true" && client.card_number}
+                      onClick={(e) => {
+                        if (client?.card_number===null&&localStorage.getItem("newClient")==="false") {
+                          changeClientData({ ...e, target: { ...e.target, name: "card_number", value: +lastCardNumber + 1 } })
+                        }else if(client?.card_number===null&&localStorage.getItem("newClient")==="true"){
+                          changeClientData({ ...e, target: { ...e.target, name: "card_number", value: +lastCardNumber + 1 } })
+                        }else{
+                          changeClientData({ ...e, target: { ...e.target, name: "card_number", value:null } })
+                        }
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faRotate} />
+                    </Button>
+                  </FormControl>
+                  <h1 style={{ color: "green", fontSize: "22px" }}>{client?.card_number}
+                  </h1>
                 </div>
               </div>
             </div>

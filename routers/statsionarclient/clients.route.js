@@ -546,6 +546,9 @@ module.exports.add = async (req, res) => {
             client._id,
             client,
         )
+        const updateClientCardNumber=await OfflineClient.findById(client._id)
+        updateClientCardNumber.card_number=client.card_number
+        updateClientCardNumber.await()
 
         const updateStatsionarConnector = await StatsionarConnector.findById(
             connector._id

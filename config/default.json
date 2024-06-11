@@ -1,6 +1,6 @@
 {
   "PORT": 9900,
-  "mongoUri": "mongodb://localhost:27017/clinika",
+  "mongoUri": "mongodb://127.0.0.1:27017/clinika",
   "jwtSecret": "alo24",
   "baseUrl": "http://localhost:9900",
   "botToken": "6448433447:AAFR-suFV-wVfISyDtvb8LCIKX64SDAbfCg",

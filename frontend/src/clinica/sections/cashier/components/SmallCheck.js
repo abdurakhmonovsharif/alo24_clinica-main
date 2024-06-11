@@ -61,20 +61,20 @@ export const SmallCheck = ({
         <div className="flex justify-between items-center">
           <div>
             <strong
-              style={{ color: "black", fontSize: "20px", fontFamily: "times" }}
+              style={{ color: "black", fontSize: "22px", fontFamily: "times" }}
             >
-              {t("Manzil")}:{" "}
+              {t("Ambulator karta raqami:")}:{" "}
             </strong>
           </div>
           <div
             style={{
               fontWeight: "bold",
               color: "black",
-              fontSize: "20px",
+              fontSize: "22px",
               fontFamily: "times",
             }}
           >
-            {clinica && clinica.address}
+            {connector.client && connector.client.card_number }
           </div>
         </div>
         <div className="flex justify-between items-center">

@@ -17,7 +17,12 @@ router.post('/client/connector/add', auth, (req, res) => {
 router.post('/client/getall', auth, (req, res) => {
     require('./clients.route').getAll(req, res)
 })
-
+router.patch('/client/changeLastCardNumber/:clinica', auth, (req, res) => {
+    require('./clients.route').addCardNumberToLastClient(req, res);
+})
+router.get('/client/lastCardNumber/:clinica', auth, (req, res) => {
+    require('./clients.route').getLastCardNumber(req, res);
+})
 router.post('/client/getallreseption', auth, (req, res) => {
     require('./clients.route').getAllReseption(req, res)
 })
